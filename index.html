@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TADA Academy – Khóa học dành cho tài xế</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#fff;--card:#fff;--ink:#12304d;--mut:#5b6b7a;--y:#ffc928;--y2:#ffe27a;--line:#e6e8ec;--ok:#1f9d55;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Be Vietnam Pro","Roboto","Segoe UI",Arial,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:#fff;color:#12304d;border-bottom:3px solid var(--y);z-index:5}
+.bar{max-width:1000px;margin:auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-weight:900;font-size:22px;letter-spacing:1px;cursor:pointer}
+.mini{font-size:13px;font-weight:600;min-width:120px;text-align:right}
+main{max-width:1000px;margin:auto;padding:16px}
+.hero{background:#fffaf0;color:#12304d;border:1px solid #f3e3a6;border-radius:18px;padding:24px}
+.hero h1{margin:0 0 6px;font-size:26px}.hero p{margin:0 0 16px;opacity:.9}
+.pb{height:10px;background:rgba(128,128,128,.25);border-radius:9px;overflow:hidden}
+.pb i{display:block;height:100%;background:var(--y);border-radius:9px;transition:width .4s}
+.hero .pb{background:#efe6bf}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:14px 0}
+.c{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 1px 3px rgba(18,48,77,.06)}
+.c h3{margin:6px 0}.c small,.mut{color:var(--mut)}
+.ico{font-size:30px}
+h2{margin:26px 0 8px}
+.mod{cursor:pointer;transition:transform .15s}.mod:hover{transform:translateY(-3px)}
+.btn{font-family:inherit;display:inline-block;border:0;background:var(--y);color:#12304d;font-weight:800;padding:12px 20px;border-radius:12px;cursor:pointer;font-size:16px}
+.btn.g{background:transparent;border:2px solid var(--line);color:var(--ink)}
+.row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:14px;flex:none}
+.dot.d{background:var(--ok);border-color:var(--ok);color:#fff}
+.back{font-family:inherit;background:none;border:0;color:var(--mut);cursor:pointer;font-size:15px;padding:6px 0}
+.dd{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.do{border-left:5px solid var(--ok)}.dont{border-left:5px solid #d64545}
+ul{padding-left:20px;margin:6px 0}li{margin:4px 0}
+.badge{text-align:center;border:3px dashed var(--y);border-radius:18px;padding:22px;background:var(--card)}
+.badge .ico{font-size:56px}
+.vid{aspect-ratio:16/9;border-radius:12px;background:linear-gradient(135deg,#ffe27a,#ffc928);color:#12304d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:12px;margin-bottom:14px}.pl{width:48px;height:48px;border-radius:50%;background:#12304d;color:#fff;display:grid;place-items:center}
+.rw{cursor:pointer;border:2px solid var(--line)}.rw.sel{border-color:var(--y);background:#fffaf0}.btn[disabled]{opacity:.5;cursor:not-allowed}select{font:inherit;padding:8px;border-radius:8px;border:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px;flex-wrap:wrap}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:24px}
+</style>
+</head>
+<body>
+<header><div class="bar"><span class="logo" onclick="location.hash=''">TADA <span style="font-weight:600">Academy</span></span><span class="mini" id="mini"></span></div></header>
+<main id="app"></main>
+<footer>© TADA Academy – Đào tạo tài xế đạt chuẩn dịch vụ</footer>
+<script>
+const M=[
+{id:"m1",ico:"🤝",t:"Giao tiếp & thái độ phục vụ",d:"Chào hỏi, giao tiếp lịch sự, xử lý tình huống với khách.",L:[
+{t:"Chào hỏi & xác nhận chuyến",m:3,p:["Chào khách trong 5 giây đầu: “Xin chào, anh/chị đi [điểm đến] phải không ạ?”","Mỉm cười, giọng nhẹ nhàng, giữ khoảng cách lịch sự.","Xác nhận lại điểm đến trên app trước khi chạy."],do:["Chào bằng tên khách nếu app hiển thị","Cảm ơn khi kết thúc chuyến"],dont:["Im lặng, không chào hỏi","Hỏi chuyện riêng tư của khách"]},
+{t:"Giao tiếp lịch sự khi di chuyển",m:4,p:["Hỏi khách có muốn bật/tắt điều hòa, nhạc hay không.","Tôn trọng khi khách muốn yên tĩnh hoặc nghe điện thoại.","Không dùng điện thoại cá nhân, không nói chuyện điện thoại khi chạy."],do:["Hỏi ý kiến khách về lộ trình","Giữ ngôn ngữ chuẩn mực"],dont:["Tranh luận chính trị, tôn giáo","Dùng điện thoại khi đang lái"]},
+{t:"Xử lý tình huống & không yêu cầu hủy chuyến",m:5,p:["Khách đến trễ: chờ đúng thời gian quy định, nhắn tin hoặc gọi qua app.","Không tự ý yêu cầu khách hủy chuyến – nếu có vấn đề, liên hệ tổng đài TADA.","Khách phàn nàn: lắng nghe, xin lỗi, đưa giải pháp; không cãi lại."],do:["Báo tổng đài khi gặp sự cố","Giữ bình tĩnh, ghi nhận phản hồi"],dont:["Ép khách hủy chuyến","Tỏ thái độ khó chịu"]}]},
+{id:"m2",ico:"🛡️",t:"Lái xe an toàn",d:"Không đạp phanh gấp, lạng lách, vượt đèn đỏ; trấn an khách.",L:[
+{t:"Tốc độ & khoảng cách an toàn",m:3,p:["Giữ khoảng cách tối thiểu với xe phía trước, tăng thêm khi trời mưa.","Giảm tốc từ xa, hạn chế đạp phanh gấp.","Tuân thủ giới hạn tốc độ từng tuyến đường."],do:["Quan sát gương thường xuyên","Phanh êm, tăng tốc đều"],dont:["Đạp phanh gấp","Chạy quá tốc độ để kịp chuyến"]},
+{t:"Không lạng lách, không vượt đèn đỏ",m:4,p:["Đèn vàng = giảm tốc và dừng, không cố vượt.","Đi đúng làn, báo hiệu rẽ sớm.","Không lạng lách, không chen ngang – rủi ro cao, bị khách đánh giá thấp."],do:["Dừng đúng vạch","Bật xi-nhan trước khi chuyển hướng"],dont:["Vượt đèn đỏ","Lạng lách, đánh võng"]},
+{t:"Khi khách tỏ ra lo lắng",m:3,p:["Nhận biết dấu hiệu: bám chặt, nhắc “chậm lại”, nhìn đồng hồ liên tục.","Hỏi nhẹ nhàng: “Anh/chị thấy tốc độ này ổn chưa ạ?” rồi điều chỉnh ngay.","Giải thích ngắn gọn lộ trình để khách yên tâm."],do:["Giảm tốc ngay khi khách yêu cầu","Nhắc khách thắt dây an toàn / đội mũ bảo hiểm"],dont:["Phớt lờ lời nhắc của khách","Biện minh cho việc chạy nhanh"]}]},
+{id:"m3",ico:"📍",t:"Nhận diện & đón khách",d:"Đúng người, đúng xe, đúng biển số, đồng phục; dùng GPS.",L:[
+{t:"Đúng người – đúng xe – đúng biển số",m:3,p:["Xác nhận tên khách và điểm đến trước khi khách lên xe.","Đảm bảo biển số xe khớp với thông tin hiển thị trong app.","Chỉ chở đúng khách đã đặt chuyến."],do:["Hỏi: “Anh/chị tên gì ạ?”","Cho khách xem biển số nếu cần"],dont:["Chở người không phải khách đặt","Đổi xe khác ngoài thông tin app"]},
+{t:"Đồng phục & hình ảnh tài xế",m:3,p:["Mặc đồng phục TADA sạch sẽ, gọn gàng.","Đeo thẻ/nhận diện theo quy định, đội mũ bảo hiểm đạt chuẩn.","Giữ ngoại hình lịch sự, không mùi khó chịu."],do:["Kiểm tra đồng phục trước ca","Giữ nụ cười thân thiện"],dont:["Mặc áo không đồng phục","Hút thuốc trước khi đón khách"]},
+{t:"Dùng GPS & phối hợp tìm điểm đón",m:5,p:["Theo dõi lộ trình đến điểm đón trên app tài xế.","Khi khó tìm: nhắn tin/gọi khách để xác định vị trí.","Chọn điểm đón an toàn, được phép dừng đỗ."],do:["Gọi khách khi còn cách ~200m","Dừng nơi an toàn, bật đèn cảnh báo"],dont:["Dừng giữa đường chắn giao thông","Bắt khách đi bộ xa không cần thiết"]}]},
+{id:"m4",ico:"🧼",t:"Vệ sinh & tình trạng phương tiện",d:"Vệ sinh mũ, yên xe, kiểm tra nhanh xe trước ca làm.",L:[
+{t:"Vệ sinh mũ bảo hiểm & yên xe",m:3,p:["Lau mũ bảo hiểm sạch bên trong và ngoài; thay lớp lót khi cần.","Lau yên xe, tay nắm, chỗ để chân mỗi ngày.","Chuẩn bị mũ sạch cho khách."],do:["Có khăn lau/dung dịch khử khuẩn","Kiểm tra quai mũ chắc chắn"],dont:["Dùng mũ bẩn, hôi","Để yên xe ướt, dính bụi"]},
+{t:"Kiểm tra nhanh xe trước ca làm",m:4,p:["Phanh trước/sau, đèn, xi-nhan, còi hoạt động tốt.","Áp suất lốp, độ mòn lốp, mức xăng/pin.","Gương chiếu hậu và biển số rõ ràng, sạch."],do:["Dành 3 phút kiểm tra trước mỗi ca","Báo bảo dưỡng khi thấy bất thường"],dont:["Chạy khi phanh yếu","Bỏ qua cảnh báo trên xe"]},
+{t:"Chuẩn bị & tổng kết ca làm",m:3,p:["Sạc đầy điện thoại, bật định vị, kiểm tra kết nối app.","Cuối ca: vệ sinh nhanh xe và mũ.","Ghi nhận phản hồi khách để cải thiện."],do:["Mang theo sạc dự phòng","Đọc lại đánh giá của khách"],dont:["Để xe bẩn qua ngày hôm sau","Bỏ qua góp ý của khách"]}]}
+];
+const VID="M7lc1UVf-VE"; // video mẫu: thay bằng ID YouTube của bạn, hoặc thêm v:"ID" cho từng bài
+const total=M.reduce((a,m)=>a+m.L.length,0);
+const R=[{id:"bonus",ico:"💰",t:"Thưởng phần trăm",d:"Thưởng phần trăm cho 5 chuyến tiếp theo"},{id:"jk",ico:"🧥",t:"Áo khoác TADA",d:"Chọn size áo bên dưới"},{id:"hat",ico:"🧢",t:"Mũ TADA",d:"Mũ TADA chính hãng"}];
+let pick=null,chosen=null;
+try{chosen=JSON.parse(localStorage.getItem("tadaR")||"null")}catch(e){}
+let done={};
+try{done=JSON.parse(localStorage.getItem("tada")||"{}")}catch(e){}
+function save(){try{localStorage.setItem("tada",JSON.stringify(done))}catch(e){}}
+const cnt=m=>m.L.filter((_,i)=>done[m.id+"-"+(i+1)]).length;
+const all=()=>Object.keys(done).filter(k=>done[k]).length;
+const pct=()=>Math.round(all()/total*100);
+const app=document.getElementById("app");
+function home(){
+const p=pct();
+let h=`<section class="hero"><h1>Trở thành Tài xế đạt chuẩn TADA</h1><p>4 module ngắn, mỗi bài 3–5 phút. Học trên điện thoại, mọi lúc mọi nơi.</p>
+<div class="pb"><i style="width:${p}%"></i></div><p style="margin:8px 0 14px"><b>${p}%</b> hoàn thành · ${all()}/${total} bài học</p>
+<button class="btn" onclick="location.hash='${nextLesson()}'">${p==0?"Bắt đầu học":p==100?"Xem lại":"Tiếp tục học"}</button></section>
+<h2>🎁 Quyền lợi khi hoàn thành</h2><div class="grid">
+<div class="c"><div class="ico">🏅</div><h3>Huy hiệu</h3><span class="mut">“Tài xế chứng nhận đạt chuẩn” hiển thị trên hồ sơ tài xế.</span></div>
+<div class="c"><div class="ico">💰</div><h3>Bonus theo %</h3><span class="mut">Thưởng phần trăm cho 5 chuyến tiếp theo.</span></div>
+<div class="c"><div class="ico">🧥</div><h3>Quà tặng</h3><span class="mut">Áo khoác, mũ TADA – số lượng giới hạn theo ngân sách và số tài xế tham gia.</span></div></div>
+<h2>📚 Nội dung khóa học</h2><div class="grid">`;
+M.forEach((m,i)=>{const c=cnt(m),pp=Math.round(c/m.L.length*100);
+h+=`<div class="c mod" onclick="location.hash='${m.id}'"><div class="ico">${m.ico}</div><small>Module ${i+1} · ${m.L.length} bài · ~${m.L.reduce((a,l)=>a+l.m,0)} phút</small><h3>${m.t}</h3><p class="mut" style="margin:0 0 10px">${m.d}</p><div class="pb"><i style="width:${pp}%"></i></div><small>${c}/${m.L.length} bài</small></div>`});
+h+=`</div>`;
+if(p==100)h+=reward();
+app.innerHTML=h}
+function reward(){return `<h2>🎉 Chúc mừng!</h2><div class="badge"><div class="ico">🏅</div><h3 style="margin:8px 0">Tài xế chứng nhận đạt chuẩn</h3><p class="mut">Bạn đã hoàn thành 100% khóa học. Huy hiệu và phần thưởng sẽ được cập nhật vào tài khoản TADA của bạn.</p><button class="btn" onclick="location.hash='rewards'">Nhận phần thưởng</button></div>`}
+function rewardsView(){
+if(chosen){const r=R.find(x=>x.id==chosen.id);app.innerHTML=`<div class="badge" style="margin-top:16px"><div class="ico">🎉</div><h3>Bạn đã chọn: ${r.t}${chosen.size?" – size "+chosen.size:""}</h3><p class="mut">TADA sẽ cập nhật phần thưởng vào tài khoản của bạn. Phần thưởng giới hạn theo ngân sách và số tài xế tham gia.</p><button class="btn" onclick="location.hash=''">Về trang chủ</button></div>`;return}
+let h=`<button class="back" onclick="location.hash=''">← Trang chủ</button><h2 style="margin-top:4px">🎁 Chọn phần thưởng của bạn</h2><p class="mut">Bạn chỉ được chọn 1 phần thưởng. Số lượng có hạn theo ngân sách.</p><div class="grid">`;
+R.forEach(r=>{h+=`<div class="c rw ${pick==r.id?"sel":""}" onclick="pick='${r.id}';rewardsView()"><div class="ico">${r.ico}</div><h3>${r.t}</h3><span class="mut">${r.d}</span>${pick==r.id?"<p><b>✓ Đã chọn</b></p>":""}</div>`});
+h+=`</div>`;
+if(pick=="jk")h+=`<p><b>Size áo:</b> <select id="sz"><option>S</option><option>M</option><option selected>L</option><option>XL</option></select></p>`;
+h+=`<button class="btn" ${pick?"":"disabled"} onclick="confirmR()">Xác nhận chọn quà</button>`;
+app.innerHTML=h}
+function confirmR(){if(!pick)return;const s=document.getElementById("sz");chosen={id:pick,size:s?s.value:""};try{localStorage.setItem("tadaR",JSON.stringify(chosen))}catch(e){}rewardsView()}
+function nextLesson(){for(const m of M)for(let i=0;i<m.L.length;i++)if(!done[m.id+"-"+(i+1)])return m.id+"-"+(i+1);return "m1"}
+function mod(m){
+let h=`<button class="back" onclick="location.hash=''">← Tất cả module</button><div class="c"><div class="ico">${m.ico}</div><h2 style="margin:4px 0">${m.t}</h2><p class="mut">${m.d}</p><div class="pb"><i style="width:${Math.round(cnt(m)/m.L.length*100)}%"></i></div>`;
+m.L.forEach((l,i)=>{const k=m.id+"-"+(i+1);h+=`<div class="row" onclick="location.hash='${k}'"><span class="dot ${done[k]?"d":""}">${done[k]?"✓":i+1}</span><div style="flex:1"><b>${l.t}</b><br><small>🕒 ${l.m} phút</small></div><span>›</span></div>`});
+app.innerHTML=h+`</div>`}
+function lesson(m,n){
+const l=m.L[n-1],k=m.id+"-"+n,id=l.v||VID;
+let h=`<button class="back" onclick="location.hash='${m.id}'">← ${m.t}</button><div class="c"><small>Bài ${n}/${m.L.length} · 🕒 ${l.m} phút</small><h2 style="margin:4px 0 12px">${l.t}</h2>
+<div class="pb" style="margin-bottom:14px"><i style="width:${Math.round(n/m.L.length*100)}%"></i></div>
+<div class="vid"><div style="font-size:60px;line-height:1">${m.ico}</div><div class="pl">▶</div><b>${l.t}</b><small>Video minh họa · ${l.m} phút</small></div>
+<h3>Ý chính</h3><ul>${l.p.map(x=>`<li>${x}</li>`).join("")}</ul>
+<div class="dd" style="margin-top:14px"><div class="c do"><b>✅ Nên làm</b><ul>${l.do.map(x=>`<li>${x}</li>`).join("")}</ul></div><div class="c dont"><b>❌ Không nên</b><ul>${l.dont.map(x=>`<li>${x}</li>`).join("")}</ul></div></div>
+${done[k]?`<div class="c" style="margin-top:18px;border-color:var(--ok);text-align:center"><div class="ico">✅</div><h3 style="margin:4px 0 10px">Bạn đã hoàn thành bài học này!</h3>${pct()==100?`<button class="btn" onclick="location.hash='rewards'">🎁 Nhận phần thưởng</button>`:""}</div><div class="nav"><button class="btn g" onclick="location.hash='${m.id}'">← Thoát ra danh sách bài</button></div>`:`<div class="nav"><button class="btn g" onclick="location.hash='${m.id}'">← Thoát ra</button><button class="btn" onclick="finish('${m.id}',${n})">Hoàn thành bài học</button></div>`}</div>`;
+app.innerHTML=h}
+function seq(){const a=[];M.forEach(m=>m.L.forEach((_,i)=>a.push(m.id+"-"+(i+1))));return a}
+function go(d,id,n){const s=seq(),i=s.indexOf(id+"-"+n)+d;location.hash=s[i]||id}
+function finish(id,n){done[id+"-"+n]=true;save();location.hash=pct()==100?"":id}
+function route(){
+const h=location.hash.slice(1);
+document.getElementById("mini").textContent=pct()+"% hoàn thành";
+if(h=="rewards"){if(pct()<100){location.hash="";return}rewardsView();scrollTo(0,0);return}
+const a=h.match(/^(m\d)-(\d)$/),b=h.match(/^(m\d)$/);
+if(a){const m=M.find(x=>x.id==a[1]);if(m&&m.L[a[2]-1]){lesson(m,+a[2]);scrollTo(0,0);return}}
+if(b){const m=M.find(x=>x.id==b[1]);if(m){mod(m);scrollTo(0,0);return}}
+home();scrollTo(0,0)}
+addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
